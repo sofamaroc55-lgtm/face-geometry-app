@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080809"><meta name="description" content="Free, privacy-first facial geometry explorer. Images are processed locally in your browser.">
+<title>CART3R // Face Geometry</title>
+<style>
+:root{color-scheme:dark;--bg:#080809;--panel:#111113;--panel2:#170b0e;--red:#ff334f;--red2:#a8162b;--line:#47202a;--muted:#a99ba0;--text:#f6eef0;--good:#8be0b1}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#3b0c16 0,transparent 48%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #ff7385;outline-offset:3px}.wrap{width:min(100% - 28px,900px);margin:auto;padding:22px 0 44px}.top{display:flex;gap:12px;align-items:center;margin-bottom:22px}.mark{width:48px;height:48px;border:1px solid var(--red);border-radius:14px;display:grid;place-items:center;background:#26080e;color:var(--red);font-size:23px;font-weight:900;box-shadow:0 0 24px #ff334f20}.eyebrow{color:#ff8595;font-size:11px;letter-spacing:.18em;font-weight:800}.title{font-size:clamp(25px,6vw,38px);line-height:1.08;margin:3px 0}.subtitle{color:var(--muted);font-size:13px}.pill{margin-left:auto;border:1px solid #3c3b3d;border-radius:99px;padding:6px 10px;color:#c8c1c3;font-size:11px;white-space:nowrap}.hero{border:1px solid var(--line);background:linear-gradient(135deg,#18090d,#0e0e10 70%);border-radius:20px;padding:20px;margin-bottom:15px}.hero h2{margin:0 0 7px;font-size:19px}.hero p{margin:0;color:#c6b8bc;font-size:13px}.privacy{display:flex;gap:9px;align-items:flex-start;margin-top:14px;padding-top:13px;border-top:1px solid #43202a;color:#d4c5c9;font-size:12px}.privacy b{color:var(--good)}.layout{display:grid;grid-template-columns:1fr;gap:15px}.card{background:linear-gradient(160deg,#141416,#0e0e10);border:1px solid #342027;border-radius:18px;padding:16px;min-width:0}.card h3{margin:0 0 12px;font-size:15px}.upload{display:block;border:1px dashed #863044;border-radius:14px;padding:19px 14px;text-align:center;background:#160a0e}.upload strong{display:block;font-size:14px}.upload span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.upload input{display:none}.actions{display:flex;gap:9px;margin-top:12px}.btn{border:1px solid #57303a;border-radius:11px;padding:11px 13px;background:#1b1517;color:var(--text);font-weight:700;font-size:13px}.btn.primary{background:linear-gradient(120deg,#c91f3a,#ff334f);border-color:#ff596d;color:white;flex:1}.btn:disabled{opacity:.5;cursor:wait}.preview{margin-top:13px;position:relative;overflow:hidden;border-radius:13px;background:#070708;min-height:190px;display:grid;place-items:center;border:1px solid #282226}.preview canvas{display:block;max-width:100%;height:auto;max-height:55vh}.empty{padding:35px 20px;text-align:center;color:#8f8588;font-size:12px}.status{margin-top:10px;color:#b9a9ad;font-size:12px;min-height:20px}.status.error{color:#ff8797}.status.ok{color:var(--good)}.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.metric{border:1px solid #35232a;border-radius:13px;padding:12px;background:#101012}.metric .name{font-size:11px;color:#b9a8ad}.metric .value{font-size:23px;font-weight:800;letter-spacing:-.04em;margin:3px 0;color:#fff}.metric .note{font-size:10px;color:#897b80}.wide{grid-column:1/-1}.hint{font-size:12px;color:var(--muted);margin:12px 0 0}.sectionline{display:flex;align-items:center;justify-content:space-between;gap:12px}.tag{font-size:10px;color:#ff9baa;border:1px solid #622535;border-radius:99px;padding:4px 7px}.steps{padding-left:18px;color:#c9bdc0;font-size:12px}.steps li{margin:7px 0}.footer{text-align:center;color:#71666a;font-size:11px;margin-top:20px}.hidden{display:none!important}@media(min-width:720px){.layout{grid-template-columns:1.1fr .9fr}.card.results{align-self:start}.preview canvas{max-height:460px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:360px){.wrap{width:calc(100% - 20px)}.pill{display:none}.actions{flex-direction:column}.btn.primary{flex:auto}}
+</style>
+</head>
+<body><main class="wrap">
+<header class="top"><div class="mark">C/</div><div><div class="eyebrow">CART3R.JAILBREAK / LAB 01</div><h1 class="title">FACE GEOMETRY</h1><div class="subtitle">On-device facial landmark explorer</div></div><div class="pill">FREE · LOCAL</div></header>
+<section class="hero"><h2>Measure geometry, not beauty.</h2><p>Explore approximate facial proportions from one photo. This tool does not rate attractiveness, diagnose health, or compare your face with an ideal.</p><div class="privacy"><span>◈</span><div><b>Privacy-first:</b> your selected image is analyzed in this browser. This demo has no account, upload endpoint, or analytics. The face model is downloaded from a public CDN when you first run analysis.</div></div></section>
+<div class="layout"><section class="card"><div class="sectionline"><h3>01 / Select a photo</h3><span class="tag">JPG · PNG · WEBP</span></div><label class="upload" for="photo"><strong>＋ Choose an image</strong><span>Use a clear, front-facing photo with even lighting</span><input id="photo" type="file" accept="image/*"></label><div class="actions"><button id="analyze" class="btn primary" disabled>Analyze geometry</button><button id="clear" class="btn">Clear</button></div><div class="preview" id="preview"><div class="empty" id="empty">Your photo and landmark overlay will appear here.</div><canvas id="canvas" class="hidden"></canvas></div><div id="status" class="status" role="status" aria-live="polite">Choose a photo to begin.</div></section>
+<section class="card results"><div class="sectionline"><h3>02 / Measurements</h3><span class="tag">NORMALIZED</span></div><div id="noResults" class="empty">Measurements will appear after a face is detected.</div><div id="metrics" class="metrics hidden"><div class="metric"><div class="name">Face aspect ratio</div><div class="value" id="aspect">—</div><div class="note">face height ÷ face width</div></div><div class="metric"><div class="name">Eye distance</div><div class="value" id="eyes">—</div><div class="note">% of face width</div></div><div class="metric"><div class="name">Nose width</div><div class="value" id="nose">—</div><div class="note">% of face width</div></div><div class="metric"><div class="name">Mouth width</div><div class="value" id="mouth">—</div><div class="note">% of face width</div></div><div class="metric wide"><div class="name">Landmarks detected</div><div class="value" id="landmarks">—</div><div class="note">Count of points returned by the model</div></div></div><p class="hint">Ratios are estimates from a 2D image, not physical measurements. Perspective, pose, expression, and image cropping can change the results.</p></section></div>
+<section class="card" style="margin-top:15px"><h3>03 / Get a more consistent result</h3><ol class="steps"><li>Use a front-facing image with the full face visible.</li><li>Keep the camera near eye level and avoid strong perspective distortion.</li><li>Use even lighting and a neutral expression where possible.</li><li>Try another image if the landmark overlay misses the face.</li></ol></section>
+<div class="footer">CART3R.JAILBREAK · FACE GEOMETRY DEMO · No attractiveness scores or identity recognition</div>
+</main>
+<script type="module">
+const $ = id => document.getElementById(id);
+const photoInput=$('photo'), analyzeBtn=$('analyze'), clearBtn=$('clear'), canvas=$('canvas'), ctx=canvas.getContext('2d'), statusEl=$('status');
+let selectedImage=null, landmarker=null, busy=false;
+const MODEL_URL='https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task';
+function status(message,type=''){statusEl.textContent=message;statusEl.className='status '+type;}
+function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
+function pct(value,base){return (value/base*100).toFixed(1)+'%';}
+function resetResults(){ $('metrics').classList.add('hidden');$('noResults').classList.remove('hidden'); ['aspect','eyes','nose','mouth','landmarks'].forEach(id=>$(id).textContent='—'); }
+photoInput.addEventListener('change',()=>{
+ const file=photoInput.files?.[0]; if(!file)return;
+ if(!file.type.startsWith('image/')){status('Please choose an image file.','error');return;}
+ if(file.size>15*1024*1024){status('Image is over 15 MB. Choose a smaller photo.','error');photoInput.value='';return;}
+ const url=URL.createObjectURL(file), img=new Image();
+ img.onload=()=>{if(selectedImage?.src?.startsWith('blob:'))URL.revokeObjectURL(selectedImage.src);selectedImage=img;canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;ctx.drawImage(img,0,0);canvas.classList.remove('hidden');$('empty').classList.add('hidden');analyzeBtn.disabled=false;resetResults();status('Photo ready. Tap Analyze geometry.');URL.revokeObjectURL(url);};
+ img.onerror=()=>{URL.revokeObjectURL(url);status('Could not read that image. Try another file.','error');};img.src=url;
+});
+async function getLandmarker(){
+ if(landmarker)return landmarker;
+ status('Loading face-landmark model. Internet is needed for the first run…');
+ const {FaceLandmarker,FilesetResolver}=await import('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14');
+ const files=await FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm');
+ landmarker=await FaceLandmarker.createFromOptions(files,{baseOptions:{modelAssetPath:MODEL_URL,delegate:'CPU'},runningMode:'IMAGE',numFaces:1,outputFaceBlendshapes:false,outputFacialTransformationMatrixes:false});
+ return landmarker;
+}
+function drawLandmarks(points){
+ ctx.drawImage(selectedImage,0,0,canvas.width,canvas.height);
+ ctx.save();ctx.fillStyle='#ff334f';ctx.strokeStyle='rgba(255,51,79,.48)';ctx.lineWidth=Math.max(1,canvas.width/700);
+ for(const p of points){ctx.beginPath();ctx.arc(p.x*canvas.width,p.y*canvas.height,Math.max(1.4,canvas.width/420),0,Math.PI*2);ctx.fill();}
+ const links=[[33,263],[61,291],[129,358],[234,454],[10,152]];ctx.strokeStyle='#ff6478';ctx.lineWidth=Math.max(1,canvas.width/900);
+ for(const [i,j] of links){if(points[i]&&points[j]){ctx.beginPath();ctx.moveTo(points[i].x*canvas.width,points[i].y*canvas.height);ctx.lineTo(points[j].x*canvas.width,points[j].y*canvas.height);ctx.stroke();}}
+ ctx.restore();
+}
+function showMetrics(p){
+ const faceWidth=distance(p[234],p[454]), faceHeight=distance(p[10],p[152]);
+ if(!faceWidth||!faceHeight)throw new Error('The face landmarks were incomplete. Try a clearer, front-facing image.');
+ const eyeDistance=distance(p[33],p[263]), noseWidth=distance(p[129],p[358]), mouthWidth=distance(p[61],p[291]);
+ $('aspect').textContent=(faceHeight/faceWidth).toFixed(2);$('eyes').textContent=pct(eyeDistance,faceWidth);$('nose').textContent=pct(noseWidth,faceWidth);$('mouth').textContent=pct(mouthWidth,faceWidth);$('landmarks').textContent=String(p.length);
+ $('noResults').classList.add('hidden');$('metrics').classList.remove('hidden');
+}
+analyzeBtn.addEventListener('click',async()=>{
+ if(!selectedImage||busy)return;busy=true;analyzeBtn.disabled=true;
+ try{const detector=await getLandmarker();const result=detector.detect(selectedImage);if(!result.faceLandmarks?.length){resetResults();status('No face detected. Try a clear, front-facing photo with the full face visible.','error');return;}const points=result.faceLandmarks[0];const needed=[10,33,61,129,152,234,263,291,358,454];if(needed.some(i=>!points[i]))throw new Error('Some required landmarks were missing. Try another image.');drawLandmarks(points);showMetrics(points);status('Analysis complete. Measurements are approximate and image-dependent.','ok');}
+ catch(err){console.error(err);status('Analysis failed: '+(err?.message||'Unknown error')+'. Check your internet connection and try again.','error');}
+ finally{busy=false;analyzeBtn.disabled=!selectedImage;}
+});
+clearBtn.addEventListener('click',()=>{selectedImage=null;photoInput.value='';ctx.clearRect(0,0,canvas.width,canvas.height);canvas.classList.add('hidden');$('empty').classList.remove('hidden');analyzeBtn.disabled=true;resetResults();status('Cleared. Choose a photo to begin.');});
+</script>
+</body></html>
